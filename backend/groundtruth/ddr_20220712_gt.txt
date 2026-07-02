@@ -1,0 +1,310 @@
+DAILY DRILLING REPORT
+PT. GEO DIPA ENERGI (Persero)
+12-Jul-22
+OPERATOR
+WELL/ PAD NAME
+WELL TYPE/ PROFILE
+PT. GEO DIPA ENERGI (Persero)
+PTH-G-4C
+BIG HOLE / J-TYPE
+GENERAL
+Rig TYPE / NAME
+RIG POWER
+KB ELEVATION
+MIDNIGHT DEPTH
+PROGRESS
+PROPOSED TD
+SPUD DATE
+RELEASE DATE
+PLANNED DAYS
+DAYS f/ RIG RELEASE
+95
+2150
+25-Jun-22, 12:00
+48
+24 HOURS SUMMARY
+AVERAGE WOB (24 HRS)
+AVERAGE ROP (24 HRS)
+AVERAGE SURFACE RPM / DHM
+ON / OFF BOTTOM TORQUE
+FLOWRATE/ SPP
+AIR RATE
+CORR. INHIB./ FOAM RATE
+PUW/SOW/ROTW
+TOTAL DRILLING TIME
+TON MILES
+KLBS-FT
+gpm/PSI
+SCFM
+GPH
+KLBS
+HRS
+JV ADA - APS
+PATUHA
+7° 10' 16.711 S / 107° 25' 9.968 E
+32
+6.12
+40 / 131
+4,5 / 8,7
+1004 / 1482
+-
+-
+140 / 132 / 135
+43
+224.0
+REPORT NO. #
+ENVIRONTMENT
+GL - MSL (M)
+AFE
+17
+ONSHORE
+1968 m-ASL
+AFE NUMBER / AFE COST
+USD 5,338,705.51
+DAILY COST
+USD 73,492.14
+% AFE / CUMULATIVE COST
+38.7%
+USD 2,065,542.47
+DAILY MUD COST
+USD 11,139.28
+CUMULATIVE MUD COST
+USD 144,952.01
+PERSONNEL IN CHARGE
+DAY/ NIGHT DRILLING SUPV.
+SUBUR A / TEUKU S
+BUDI SETIAWAN
+DRILLING SUPERINTENDENT
+RIG SUPERINTENDENT
+SARPAN
+DRILLING ENGINEER
+EKA DAYA SAMUDERA
+HERDEDI
+HSE SUPERVISOR
+Drill out 17-1/2" formation from 557 mMD to 652 mMD
+24 HOURS FORECAST
+STATUS 05:00 Hrs
+LAND RIG / ARJUNA#88
+1,500
+11.00
+652
+HP
+Meter
+Meter
+Meter
+Meter
+CONTRACTOR
+FIELD
+LATITUDE/ LONGITUDE
+DRILLING PARAMETERS
+KLBS
+M/HR
+Continue drill out 17-1/2" formation from 652 mMD to 768 mMD
+13-Jul-22
+Drilling 17-1/2" to 670 mMD/664,78 mTVD
+HSE
+SAFETY PERFORMANCE
+Nearmiss
+1.0
+Incidents
+1.0
+Last MTI
+-
+Last LTI
+-
+Days w/out LTI
+285.00
+HOURS RECORD
+KM Hrs Light Vehicle
+KM Hrs Heavy Equipment
+Total Daily Personnel
+Daily Safe Manhours / Cum Safe Manhours
+DWLTI Since
+ACCIDENT/ INCIDENT SUMMARY
+213
+130
+187
+2.244/609.452
+1-Oct-21
+HAZARD MANAGEMENT
+JSA/HIRA
+PTW
+Pre Tour Meeting
+Observation Card
+Safety Inspection/ Training
+7
+7
+2
+137
+11
+EMERGENCY DRILLS
+H2S Drill
+19-Jun-22
+BOP Drill/ Kick Drill
+26-Jun-22
+Fire Drill
+7-Jun-22
+Trip Drill
+26-Jun-22
+Medivac Drill
+26-Jun-22
+SAFETY ISSUES
+N/A
+Domestic Waste (m3)
+Hazardous Waste/B3 (kg)
+Spill Incidents (barrels)
+Enviro/ Community Issue
+0
+N/A
+ENVlROMENTAL RECORD
+Hazardous Waste (kg)
+Drill Cutting Vol (jumbo bag)
+Other (BB)
+Cummulative 24 Hrs
+OCCUPATIONAL HEALTH RECORD
+59
+Fit for duty / MCU (person)
+Clinic Visit
+Number of Work Related Illnesses
+Occupational Health Issue
+90
+4
+TIME BREAKDOWN
+OPERATIONS FOR PERIOD 00:00 TO 24:00 HRS ON Tue, 12-Jul-22
+TIME, HH:MM
+START
+END
+ELAPSED
+DEPTH
+PT/NPT
+CODE
+DESCRIPTION
+OPERATIONS
+Drilling 17-1/2" Hole section from 557 mMD to 652 mMD/ 647.68 mTVD, Full return - PLC
+- Parameter: WOB 15 - 43 klbs, FR 1000 gpm, SPP 1150 - 1580 psi, RPM/M 40-50/131, TQ 3.9-9.7 klbs.ft, Avg. ROP 6.12 m/hrs.
+Bit Hrs: 42.9 Hrs, Krev OB/Tot : 383.2 / 633.8, Temp In/Out : 46 / 55 deg C. MW In/Out: 8.6 / 8.6 ppg
+Rotate: 44 m, 46%, 4.69 hrs, 9.4 m/hrs
+Slide: 51 m, 54% (557-562 m, 568-572 m, 578-581 m, 587-592 m, 599 - 603 m, 609-613 m, 619-622 m, 628-634 m, 638-645 m, 647-650 m, 651-652
+m)
+Lithology:
+@ 524 - 605 mMD: Lithic coarse pyroclastic
+@ 605 - 650 mMD: Andesite
+Last MeB @ 650 mMD : 4%
+0:00
+24:00
+24.0
+652
+PT
+2a
+Drilling Formation
+Last Survey:
+Depth: 633.35 mMD, 629.71 mTVD, Inc 15.37 deg, Azm 267.02 deg. CtoC : 3.61 m, 3.58 m above, 0.43 m right of plan, Distance to PTH-G-4B = 35.46
+m, DLS : 1.03 BHT : 56
+- Last P/U-S/O-R/W @ 650 m: 140/132/136 klbs
+Note:
+- Sweep Hi-Vis every half stand 100 bbls, and every stand down 100 bbls
+- Sweep Hi-Vis + LCM 40 ppb 100 bbls @ 551 mMD, 622 mMD, 648 mMD
+- PLC @ 560 - 561.4 m : 0.6 bpm (36 bph)
+- PLC @ 618 - 640 m : 0.8 - 4.5 bpm (48 - 270 bph)
+- PLC @ 645 - 651 m : 0.6 - 1.0 bpm (36 - 60 bph)
+- Bit on bottom: 15.53 hrs / Cum 42.7 hrs , off bottom: 7.93 hrs / Cum 26.69 hrs
+- Run Cooling Tower Continuously @ 434 mMD
+- Increase KCl 3% at 552 mMD (Increase KCl gradually)
+TOTAL HRS
+24.0Wed, 13-Jul-2022
+OPERATIONS FOR PERIOD 00:00 TO 05:00 HRS ON
+TIME, HH:MM
+START
+END
+ELAPSED
+DEPTH
+PT/NPT
+CODE
+DESCRIPTION
+OPERATIONS
+Drilling 17-1/2" Hole section from 652 mMD to 670 mMD/664,78 mTVD Full return-PLC
+- Parameter : WOB 15-43 klbs, FR 1000 gpm, SPP 1450-1580 psi, RPM/M 40-50/131, TQ 3.9-8.7 klbs.ft, MW In/Out : 8.6/8.6 ppg, Avg. ROP : 4.85
+m/hrs.
+- Bit Hrs : 46.2 Hrs, Krev OB/Tot : 410.8/ 666.8, Temp In/Out : 46/56 deg C
+Rotate : 5 m, 0.9 hrs, 5.6 m/hrs, 29%
+Slide : 12 m, 79% (652-654 m, 656-663 m, 665-668 m)
+Lithology @ 650-668 : Andesite
+Last MeB @ 656 mMD : 4%
+0:00
+5:00
+5.0
+670
+PT
+2a
+Drilling Formation
+Last Survey :
+Depth : 643.37 mMD, 639.36 mVD, Inc 15.86 deg, Azm 266.04 deg. CtoC : 3.08 m, 2.96 m above, 0.85 m right of plan, Distance to PTH-G-4B = 37.86
+m, DLS : 1.66 BHT : 57
+P/U, S/O, R/W : 140/132/136 klbs @650 mMD
+Note :
+- Swept Hi-Vis every half stand 100 bbls, and every stand down 100 bbls
+- Swept Hi-Vis + LCM 40 ppb 100 bbls @ 648 mMD
+- PLC @ 657 - 668 m : 0.6 - 1.0 bpm (36 - 60 bph)
+- Bit on bottom record : (00:00 - 05:00 Hrs)
+On Bottom : 3.30 Hrs, Off bottom : 0.61 Hrs
+(Cumm : On bottom : 46.3 Hours, Off bottom : 27.36 Hours)
+- Run Cooling Tower Continuously @ 434 mMD
+- Increase KCl 3% at 552 mMD (Increase KCl gradually)
+TOTAL HRS
+24.0
+OPERATIONS FOR PERIOD 00:00 TO 05:00 HRS ON
+TIME, HH:MM
+START
+END
+ELAPSED
+DEPTH
+PT/NPT
+CODE
+DESCRIPTION
+OPERATIONS
+Drilling 17-1/2" Hole section from 652 mMD to 670 mMD/664,78 mTVD Full return-PLC
+- Parameter : WOB 15-43 klbs, FR 1000 gpm, SPP 1450-1580 psi, RPM/M 40-50/131, TQ 3.9-8.7 klbs.ft, MW In/Out : 8.6/8.6 ppg, Avg. ROP : 4.85
+m/hrs.
+- Bit Hrs : 46.2 Hrs, Krev OB/Tot : 410.8/ 666.8, Temp In/Out : 46/56 deg C
+Rotate : 5 m, 0.9 hrs, 5.6 m/hrs, 29%
+Slide : 12 m, 79% (652-654 m, 656-663 m, 665-668 m)
+Lithology @ 650-668 : Andesite
+Last MeB @ 656 mMD : 4%
+0:00
+5:00
+5.0
+670
+PT
+2a
+GENERAL COMMENTS
+Progress activity : 23%
+Note:
+Estimated Mud Loss (24 Hrs) : ± 1240 Bbls.
+Estimated Cumulative Mud Loss : ± 16628 Bbls
+Estimated Water Loss (24 hrs ) : ± 0 Bbls.
+Estimated Cumulative Water Loss : ± 244.879 Bbls.
+Monitor WHP at well PTH-G-4B: 625 psi at wing valve & 0 psi at crown valve.
+Record NPT
+- NPT Wash / Reaming / Backreaming Unplanned 0 hrs / Cum 25 hrs (6%)
+- NPT Stuck 0 / Cum 0.5 hrs (0,12%)
+- NPT Total 0 hrs / Cum 25.5 hrs (6,1%)
+Drilling Formation
+Last Survey :
+Depth : 643.37 mMD, 639.36 mVD, Inc 15.86 deg, Azm 266.04 deg. CtoC : 3.08 m, 2.96 m above, 0.85 m right of plan, Distance to PTH-G-4B = 37.86
+m, DLS : 1.66 BHT : 57
+P/U, S/O, R/W : 140/132/136 klbs @650 mMD
+Note :
+- Swept Hi-Vis every half stand 100 bbls, and every stand down 100 bbls
+- Swept Hi-Vis + LCM 40 ppb 100 bbls @ 648 mMD
+- PLC @ 657 - 668 m : 0.6 - 1.0 bpm (36 - 60 bph)
+- Bit on bottom record : (00:00 - 05:00 Hrs)
+On Bottom : 3.30 Hrs, Off bottom : 0.61 Hrs
+(Cumm : On bottom : 46.3 Hours, Off bottom : 27.36 Hours)
+- Run Cooling Tower Continuously
+SIGNATURE
+REPORTED BYACKNOWLEDGED BYAPPROVED BY
+SUBUR A
+DRILLING SUPERVISORSARPAN
+RIG SUPERINTENDENTAKHMAD RYAN SURYANSYAH
+PROJECT MANAGER PATUHA 2
+
