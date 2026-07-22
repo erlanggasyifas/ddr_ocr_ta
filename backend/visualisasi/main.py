@@ -61,22 +61,22 @@ def get_documents():
         raise HTTPException(status_code=500, detail="Gagal koneksi database.")
 
     cursor = conn.cursor(dictionary=True)
-    cursor.execute(
-        """
-        SELECT id, filename, report_date, well_name, operator, created_at
-        FROM ddr_documents
-        ORDER BY created_at DESC
-        """
-    )
-    rows = cursor.fetchall()
-    cursor.close()
-    conn.close()
-
-    for row in rows:
-        if isinstance(row.get("created_at"), datetime):
-            row["created_at"] = row["created_at"].isoformat()
-
-    return {"total": len(rows), "documents": rows}
+    try:
+        cursor.execute(
+            """
+            SELECT id, filename, report_date, well_name, operator, created_at
+            FROM ddr_documents
+            ORDER BY created_at DESC
+            """
+        )
+        rows = cursor.fetchall()
+        for row in rows:
+            if isinstance(row.get("created_at"), datetime):
+                row["created_at"] = row["created_at"].isoformat()
+        return {"total": len(rows), "documents": rows}
+    finally:
+        cursor.close()
+        conn.close()
 
 
 @app.post("/upload")
@@ -127,36 +127,36 @@ def get_time_breakdown(date: str = None, document_id: int = None):
         raise HTTPException(status_code=500, detail="Gagal koneksi database.")
 
     cursor = conn.cursor(dictionary=True)
-    cursor.execute(
-        """
-        SELECT
-            tb.document_id,
-            tb.period_date,
-            tb.start_time,
-            tb.end_time,
-            tb.elapsed,
-            tb.depth,
-            tb.pt_npt,
-            tb.code,
-            tb.description,
-            tb.operations,
-            d.well_name,
-            d.report_date
-        FROM ddr_time_breakdown tb
-        INNER JOIN ddr_documents d ON tb.document_id = d.id
-        ORDER BY d.report_date, tb.start_time ASC
-        """
-    )
-    rows = cursor.fetchall()
-    cursor.close()
-    conn.close()
-
-    if date:
-        rows = [r for r in rows if r.get("period_date") == date]
-    if document_id:
-        rows = [r for r in rows if r.get("document_id") == document_id]
-
-    return {"total": len(rows), "time_breakdown": rows}
+    try:
+        cursor.execute(
+            """
+            SELECT
+                tb.document_id,
+                tb.period_date,
+                tb.start_time,
+                tb.end_time,
+                tb.elapsed,
+                tb.depth,
+                tb.pt_npt,
+                tb.code,
+                tb.description,
+                tb.operations,
+                d.well_name,
+                d.report_date
+            FROM ddr_time_breakdown tb
+            INNER JOIN ddr_documents d ON tb.document_id = d.id
+            ORDER BY d.report_date, tb.start_time ASC
+            """
+        )
+        rows = cursor.fetchall()
+        if date:
+            rows = [r for r in rows if r.get("period_date") == date]
+        if document_id:
+            rows = [r for r in rows if r.get("document_id") == document_id]
+        return {"total": len(rows), "time_breakdown": rows}
+    finally:
+        cursor.close()
+        conn.close()
 
 
 @app.get("/wells")
@@ -167,24 +167,25 @@ def get_wells():
         raise HTTPException(status_code=500, detail="Gagal koneksi database.")
 
     cursor = conn.cursor(dictionary=True)
-    cursor.execute(
-        """
-        SELECT
-            well_name AS well_pad_name,
-            COUNT(id)  AS document_count,
-            MIN(report_date) AS earliest_date,
-            MAX(report_date) AS latest_date
-        FROM ddr_documents
-        WHERE well_name IS NOT NULL AND well_name != ''
-        GROUP BY well_name
-        ORDER BY well_name ASC
-        """
-    )
-    rows = cursor.fetchall()
-    cursor.close()
-    conn.close()
-
-    return {"total": len(rows), "wells": rows}
+    try:
+        cursor.execute(
+            """
+            SELECT
+                well_name AS well_pad_name,
+                COUNT(id)  AS document_count,
+                MIN(report_date) AS earliest_date,
+                MAX(report_date) AS latest_date
+            FROM ddr_documents
+            WHERE well_name IS NOT NULL AND well_name != ''
+            GROUP BY well_name
+            ORDER BY well_name ASC
+            """
+        )
+        rows = cursor.fetchall()
+        return {"total": len(rows), "wells": rows}
+    finally:
+        cursor.close()
+        conn.close()
 
 
 @app.get("/wells/{well_pad_name}/time_breakdown")

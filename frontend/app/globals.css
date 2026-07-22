@@ -6,39 +6,39 @@
    ============================================================ */
 
 @theme {
-    --color-bg-base: #13120f;
-    --color-bg-surface: #1a1916;
-    --color-bg-elevated: #222019;
-    --color-bg-overlay: #2a2824;
-    --color-bg-hover: #2f2d28;
+    --color-bg-base: #f7f6f2;
+    --color-bg-surface: #ffffff;
+    --color-bg-elevated: #efeee9;
+    --color-bg-overlay: #e5e3db;
+    --color-bg-hover: #fafafa;
 
-    --color-border-subtle: rgba(255, 255, 255, 0.06);
-    --color-border-default: rgba(255, 255, 255, 0.1);
-    --color-border-strong: rgba(255, 255, 255, 0.18);
+    --color-border-subtle: rgba(0, 0, 0, 0.05);
+    --color-border-default: rgba(0, 0, 0, 0.1);
+    --color-border-strong: rgba(0, 0, 0, 0.18);
 
-    --color-text-primary: #f0ede8;
-    --color-text-secondary: #9e9b94;
-    --color-text-muted: #5c5a55;
-    --color-text-inverse: #13120f;
+    --color-text-primary: #181715;
+    --color-text-secondary: #585650;
+    --color-text-muted: #8c8a81;
+    --color-text-inverse: #ffffff;
 
-    --color-accent: #2dd4a0;
-    --color-accent-dim: #1a7d60;
-    --color-accent-subtle: rgba(45, 212, 160, 0.1);
-    --color-accent-glow: rgba(45, 212, 160, 0.15);
+    --color-accent: #059669;
+    --color-accent-dim: #047857;
+    --color-accent-subtle: rgba(5, 150, 105, 0.08);
+    --color-accent-glow: rgba(5, 150, 105, 0.12);
 
-    --color-success: #4ade80;
-    --color-success-subtle: rgba(74, 222, 128, 0.1);
-    --color-warning: #fbbf24;
-    --color-warning-subtle: rgba(251, 191, 36, 0.1);
-    --color-danger: #f87171;
-    --color-danger-subtle: rgba(248, 113, 113, 0.1);
-    --color-info: #60a5fa;
-    --color-info-subtle: rgba(96, 165, 250, 0.1);
+    --color-success: #10b981;
+    --color-success-subtle: rgba(16, 185, 129, 0.1);
+    --color-warning: #d97706;
+    --color-warning-subtle: rgba(217, 119, 6, 0.1);
+    --color-danger: #dc2626;
+    --color-danger-subtle: rgba(220, 38, 38, 0.1);
+    --color-info: #2563eb;
+    --color-info-subtle: rgba(37, 99, 235, 0.1);
 
-    --color-chart-pt: #2dd4a0;
-    --color-chart-npt: #fbbf24;
-    --color-chart-standby: #60a5fa;
-    --color-chart-other: #5c5a55;
+    --color-chart-pt: #10b981;
+    --color-chart-npt: #f59e0b;
+    --color-chart-standby: #3b82f6;
+    --color-chart-other: #8c8a81;
 
     --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
     --font-mono: "DM Mono", ui-monospace, monospace;
@@ -806,8 +806,8 @@ th.mono {
     overflow: hidden;
     animation: modal-panel-in 180ms ease both;
     box-shadow:
-        0 0 0 0.5px rgba(255,255,255,0.04) inset,
-        0 24px 64px rgba(0, 0, 0, 0.6);
+        0 0 0 0.5px rgba(0, 0, 0, 0.04) inset,
+        0 24px 64px rgba(0, 0, 0, 0.15);
 }
 
 @keyframes modal-panel-in {

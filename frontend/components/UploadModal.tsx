@@ -28,11 +28,7 @@ interface PipelineStatus {
   message: string;
 }
 
-const PIPELINE_STEPS = [
-  { label: "Konversi PDF → Excel", desc: "PaddleOCR + img2table" },
-  { label: "Parsing Excel → JSON", desc: "scan horizontal & vertikal" },
-  { label: "Simpan ke MariaDB", desc: "4 tabel, duplicate check" },
-];
+
 
 /* ── Icons ── */
 function IconUploadCloud() {
@@ -241,12 +237,13 @@ export default function UploadModal({
     return () => window.removeEventListener("keydown", handler);
   }, [open, status]);
 
-  /* lock body scroll while open */
+  /* lock body scroll while open & reset when closed */
   useEffect(() => {
     if (open) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
+      reset();
     }
     return () => { document.body.style.overflow = ""; };
   }, [open]);
@@ -492,40 +489,16 @@ export default function UploadModal({
 
           {/* ══ PROCESSING ══ */}
           {status === "processing" && (
-            <div style={{ textAlign: "center", padding: "24px 0 8px" }}>
+            <div style={{ textAlign: "center", padding: "28px 16px 16px" }}>
               <Spinner />
-              <p style={{ margin: "0 0 4px", fontSize: "0.875rem", fontWeight: 500, color: "var(--color-text-primary)" }}>
-                Pipeline sedang berjalan
+              <p style={{ margin: "0 0 6px", fontSize: "1rem", fontWeight: 500, color: "var(--color-text-primary)" }}>
+                Memproses Laporan DDR
               </p>
-              <p style={{ margin: "0 0 20px", fontSize: "0.75rem", color: "var(--color-text-muted)", fontFamily: "var(--font-mono)" }}>
-                {file?.name}
+              <p style={{ margin: "0 auto 16px", fontSize: "0.8125rem", color: "var(--color-text-muted)", maxWidth: "280px", lineHeight: 1.5 }}>
+                Sistem sedang melakukan ekstraksi otomatis & analisis data dari file laporan...
               </p>
-
-              <div style={{ display: "flex", flexDirection: "column", gap: "10px", textAlign: "left", maxWidth: "260px", margin: "0 auto 16px" }}>
-                {PIPELINE_STEPS.map((step, i) => (
-                  <div key={i} style={{ display: "flex", alignItems: "flex-start", gap: "10px" }}>
-                    <div
-                      style={{
-                        width: "6px",
-                        height: "6px",
-                        borderRadius: "50%",
-                        background: "var(--color-accent)",
-                        flexShrink: 0,
-                        marginTop: "6px",
-                        animation: "pulse-dot 1.5s ease-in-out infinite",
-                        animationDelay: `${i * 400}ms`,
-                      }}
-                    />
-                    <div>
-                      <p style={{ margin: 0, fontSize: "0.8125rem", color: "var(--color-text-primary)" }}>{step.label}</p>
-                      <p style={{ margin: 0, fontSize: "0.75rem", color: "var(--color-text-muted)", fontFamily: "var(--font-mono)" }}>{step.desc}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <p style={{ margin: 0, fontSize: "0.6875rem", color: "var(--color-text-muted)", fontFamily: "var(--font-mono)" }}>
-                menunggu hasil... {pollSeconds}s
+              <p style={{ margin: 0, fontSize: "0.75rem", color: "var(--color-text-muted)", fontFamily: "var(--font-mono)" }}>
+                {file?.name} · waktu proses: {pollSeconds}s
               </p>
             </div>
           )}

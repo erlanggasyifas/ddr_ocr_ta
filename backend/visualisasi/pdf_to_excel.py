@@ -8,6 +8,11 @@ import openpyxl
 from img2table.document import PDF
 from img2table.ocr import PaddleOCR
 
+# Monkey-patch img2table to prevent discarding valid tables due to slight coordinate misalignments
+import img2table.tables.types
+img2table.tables.types.Table.has_valid_shape = lambda self: min(self.nb_rows, self.nb_columns) >= 2 and self.nb_cells >= 4
+
+
 parser = argparse.ArgumentParser()
 parser.add_argument("--input", type=str, default=None)
 parser.add_argument("--engine", type=str, default="paddle", choices=["paddle", "easy"])

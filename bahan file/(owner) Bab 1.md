@@ -53,5 +53,5 @@ Agar penelitian ini lebih terarah dan fokus, ditetapkan batasan masalah sebagai 
 3. Dataset yang digunakan dalam pengujian terbatas pada 13 sampel dokumen Drilling Reports dikarenakan sifat kerahasiaan data (confidentiality) perusahaan.
 4. Fokus utama penelitian adalah pada akurasi pemrosesan data (data processing), sedangkan fitur antarmuka web dibatasi pada visualisasi data (dashboard) hasil ekstraksi.
 5. Sistem yang dibangun hanya mengakomodasi satu jenis hak akses pengguna (single role), yaitu admin atau operator yang bertugas melakukan unggah dan validasi data.
-6. Ruang lingkup pembacaan dan ekstraksi data oleh model OCR dibatasi pada bagian profile hingga time breakdown sesuai dengan rekomendasi kebutuhan operasional PT. Parama Data Unit.
+6. Ruang lingkup pembacaan dan ekstraksi data oleh model OCR dibatasi pada empat kelompok parameter utama sesuai dengan struktur laporan dan kebutuhan operasional PT. Parama Data Unit, yaitu: Metadata Sumur (*Well Profile*), Parameter Pengeboran (*Drilling Parameters*), Catatan Penggunaan Mata Bor (*Bit Records*), serta Rincian Aktivitas Operasi per Jam (*Time Breakdown*).
 7. Implementasi dan pengujian sistem aplikasi web dilakukan pada lingkungan server lokal (development environment) dan tidak mencakup tahap deployment ke infrastruktur cloud publik.

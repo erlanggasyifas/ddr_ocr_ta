@@ -226,6 +226,162 @@ function WellRow({ well }: { well: Well }) {
   );
 }
 
+/* ── Pagination Component (Shadcn UI Style) ── */
+function Pagination({
+  currentPage,
+  totalPages,
+  totalItems,
+  pageSize,
+  onPageChange,
+}: {
+  currentPage: number;
+  totalPages: number;
+  totalItems: number;
+  pageSize: number;
+  onPageChange: (page: number) => void;
+}) {
+  if (totalPages <= 1) return null;
+
+  const startItem = (currentPage - 1) * pageSize + 1;
+  const endItem = Math.min(currentPage * pageSize, totalItems);
+
+  const pages: (number | "...")[] = [];
+  if (totalPages <= 7) {
+    for (let i = 1; i <= totalPages; i++) pages.push(i);
+  } else {
+    pages.push(1);
+    if (currentPage > 3) pages.push("...");
+    const start = Math.max(2, currentPage - 1);
+    const end = Math.min(totalPages - 1, currentPage + 1);
+    for (let i = start; i <= end; i++) pages.push(i);
+    if (currentPage < totalPages - 2) pages.push("...");
+    pages.push(totalPages);
+  }
+
+  return (
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "space-between",
+        marginTop: "16px",
+        paddingTop: "16px",
+        borderTop: "0.5px solid var(--color-border-subtle)",
+        flexWrap: "wrap",
+        gap: "12px",
+      }}
+    >
+      <span
+        style={{
+          fontSize: "0.75rem",
+          color: "var(--color-text-muted)",
+          fontFamily: "var(--font-mono)",
+        }}
+      >
+        Menampilkan {startItem} - {endItem} dari {totalItems} data
+      </span>
+
+      <div style={{ display: "flex", alignItems: "center", gap: "4px" }}>
+        <button
+          onClick={() => onPageChange(currentPage - 1)}
+          disabled={currentPage === 1}
+          className="btn btn-secondary btn-sm"
+          style={{
+            height: "32px",
+            padding: "0 10px",
+            fontSize: "0.75rem",
+            opacity: currentPage === 1 ? 0.4 : 1,
+            cursor: currentPage === 1 ? "not-allowed" : "pointer",
+          }}
+        >
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
+            <polyline points="15 18 9 12 15 6" />
+          </svg>
+          Sebelumnya
+        </button>
+
+        {pages.map((p, idx) => {
+          if (p === "...") {
+            return (
+              <span
+                key={`dots-${idx}`}
+                style={{
+                  padding: "0 6px",
+                  fontSize: "0.75rem",
+                  color: "var(--color-text-muted)",
+                }}
+              >
+                ...
+              </span>
+            );
+          }
+          const isCurrent = p === currentPage;
+          return (
+            <button
+              key={p}
+              onClick={() => onPageChange(p as number)}
+              style={{
+                minWidth: "32px",
+                height: "32px",
+                padding: "0 6px",
+                borderRadius: "var(--radius-md)",
+                border: isCurrent
+                  ? "1px solid var(--color-accent)"
+                  : "1px solid var(--color-border-subtle)",
+                background: isCurrent
+                  ? "var(--color-accent-subtle)"
+                  : "var(--color-bg-surface)",
+                color: isCurrent
+                  ? "var(--color-accent)"
+                  : "var(--color-text-secondary)",
+                fontSize: "0.75rem",
+                fontWeight: isCurrent ? 600 : 400,
+                fontFamily: "var(--font-mono)",
+                cursor: "pointer",
+                transition: "all var(--transition-fast)",
+              }}
+            >
+              {p}
+            </button>
+          );
+        })}
+
+        <button
+          onClick={() => onPageChange(currentPage + 1)}
+          disabled={currentPage === totalPages}
+          className="btn btn-secondary btn-sm"
+          style={{
+            height: "32px",
+            padding: "0 10px",
+            fontSize: "0.75rem",
+            opacity: currentPage === totalPages ? 0.4 : 1,
+            cursor: currentPage === totalPages ? "not-allowed" : "pointer",
+          }}
+        >
+          Selanjutnya
+          <svg
+            width="12"
+            height="12"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
+            <polyline points="9 18 15 12 9 6" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  );
+}
+
 /* ══════════════════════════════════════════
    PAGE
 ══════════════════════════════════════════ */
@@ -243,6 +399,11 @@ export default function DashboardPage() {
 
   // "documents" | "wells"
   const [activeView, setActiveView] = useState<"documents" | "wells">("documents");
+
+  // Pagination states (10 per page)
+  const [docPage, setDocPage] = useState(1);
+  const [wellPage, setWellPage] = useState(1);
+  const ITEMS_PER_PAGE = 10;
 
   useEffect(() => {
     fetchDocuments();
@@ -262,7 +423,13 @@ export default function DashboardPage() {
           )
         : documents,
     );
+    setDocPage(1);
   }, [search, documents]);
+
+  useEffect(() => {
+    setDocPage(1);
+    setWellPage(1);
+  }, [activeView]);
 
   async function fetchDocuments() {
     setLoading(true);
@@ -301,12 +468,25 @@ export default function DashboardPage() {
 
   const isLoading = loading || wellsLoading;
 
+  // Calculate paginated lists
+  const docTotalPages = Math.ceil(filtered.length / ITEMS_PER_PAGE) || 1;
+  const paginatedDocs = filtered.slice(
+    (docPage - 1) * ITEMS_PER_PAGE,
+    docPage * ITEMS_PER_PAGE,
+  );
+
+  const wellTotalPages = Math.ceil(wells.length / ITEMS_PER_PAGE) || 1;
+  const paginatedWells = wells.slice(
+    (wellPage - 1) * ITEMS_PER_PAGE,
+    wellPage * ITEMS_PER_PAGE,
+  );
+
   return (
     <div className="page-enter">
       <UploadModal
         open={uploadOpen}
         onClose={() => setUploadOpen(false)}
-        onSuccess={() => { setUploadOpen(false); fetchDocuments(); fetchWells(); }}
+        onSuccess={() => { fetchDocuments(); fetchWells(); }}
       />
 
       {/* ── Page header ── */}
@@ -346,11 +526,12 @@ export default function DashboardPage() {
           <div className="stat-change flat">{search && activeView === "documents" ? "filter aktif" : "semua"}</div>
         </div>
         <div className="stat-card">
-          <div className="stat-label">Model OCR</div>
-          <div className="stat-value" style={{ fontSize: "1rem", paddingTop: "6px", letterSpacing: "-0.01em" }}>
-            PaddleOCR
+          <div className="stat-label">Rata-rata Laporan</div>
+          <div className="stat-value">
+            {loading || wellsLoading || wells.length === 0 ? "0" : (documents.length / wells.length).toFixed(1)}
+            <span style={{ fontSize: "1rem", fontWeight: 400, marginLeft: "4px" }}>/ Sumur</span>
           </div>
-          <div className="stat-change up">WER 0.77</div>
+          <div className="stat-change flat">distribusi arsip</div>
         </div>
       </div>
 
@@ -470,7 +651,7 @@ export default function DashboardPage() {
             </div>
           )}
 
-          {/* Document list */}
+          {/* Document list with Pagination */}
           {!loading && !error && filtered.length > 0 && (
             <>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "10px" }}>
@@ -482,8 +663,16 @@ export default function DashboardPage() {
                 </span>
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-                {filtered.map((doc) => <DocRow key={doc.id} doc={doc} />)}
+                {paginatedDocs.map((doc) => <DocRow key={doc.id} doc={doc} />)}
               </div>
+
+              <Pagination
+                currentPage={docPage}
+                totalPages={docTotalPages}
+                totalItems={filtered.length}
+                pageSize={ITEMS_PER_PAGE}
+                onPageChange={(p) => setDocPage(p)}
+              />
             </>
           )}
         </>
@@ -525,7 +714,7 @@ export default function DashboardPage() {
             </div>
           )}
 
-          {/* Well list */}
+          {/* Well list with Pagination */}
           {!wellsLoading && !wellsError && wells.length > 0 && (
             <>
               <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "10px" }}>
@@ -537,8 +726,16 @@ export default function DashboardPage() {
                 </span>
               </div>
               <div style={{ display: "flex", flexDirection: "column", gap: "6px" }}>
-                {wells.map((well) => <WellRow key={well.well_pad_name} well={well} />)}
+                {paginatedWells.map((well) => <WellRow key={well.well_pad_name} well={well} />)}
               </div>
+
+              <Pagination
+                currentPage={wellPage}
+                totalPages={wellTotalPages}
+                totalItems={wells.length}
+                pageSize={ITEMS_PER_PAGE}
+                onPageChange={(p) => setWellPage(p)}
+              />
             </>
           )}
         </>

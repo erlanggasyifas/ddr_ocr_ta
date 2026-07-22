@@ -45,6 +45,9 @@ def init_db():
 
     cursor = conn.cursor()
 
+    # Pastikan database menggunakan utf8mb4
+    cursor.execute("ALTER DATABASE CHARACTER SET = utf8mb4 COLLATE = utf8mb4_unicode_ci;")
+
     # Tabel utama dokumen DDR
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS ddr_documents (
@@ -54,7 +57,7 @@ def init_db():
             well_name   VARCHAR(100),
             operator    VARCHAR(100),
             created_at  DATETIME DEFAULT CURRENT_TIMESTAMP
-        )
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
     """)
 
     # Tabel field hasil ekstraksi (key-value flat)
@@ -66,7 +69,7 @@ def init_db():
             field_key   VARCHAR(255),
             field_value TEXT,
             FOREIGN KEY (document_id) REFERENCES ddr_documents(id) ON DELETE CASCADE
-        )
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
     """)
 
     # Tabel time breakdown per tanggal
@@ -84,7 +87,7 @@ def init_db():
             description TEXT,
             operations  LONGTEXT,
             FOREIGN KEY (document_id) REFERENCES ddr_documents(id) ON DELETE CASCADE
-        )
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
     """)
 
     # Tabel bit records
@@ -96,13 +99,17 @@ def init_db():
             field_key   VARCHAR(255),
             field_value TEXT,
             FOREIGN KEY (document_id) REFERENCES ddr_documents(id) ON DELETE CASCADE
-        )
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci
     """)
+
+    # Pastikan tabel lama dikonversi ke utf8mb4
+    for table_name in ["ddr_documents", "ddr_fields", "ddr_time_breakdown", "ddr_bit_records"]:
+        cursor.execute(f"ALTER TABLE {table_name} CONVERT TO CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;")
 
     conn.commit()
     cursor.close()
     conn.close()
-    print("[DB] Tabel berhasil diinisialisasi.")
+    print("[DB] Tabel berhasil diinisialisasi (utf8mb4).")
     return True
 
 
@@ -306,11 +313,12 @@ def get_all_documents():
     if not conn:
         return []
     cursor = conn.cursor(dictionary=True)
-    cursor.execute("SELECT * FROM ddr_documents ORDER BY created_at DESC")
-    rows = cursor.fetchall()
-    cursor.close()
-    conn.close()
-    return rows
+    try:
+        cursor.execute("SELECT * FROM ddr_documents ORDER BY created_at DESC")
+        return cursor.fetchall()
+    finally:
+        cursor.close()
+        conn.close()
 
 
 def get_fields_by_document(document_id: int):
@@ -318,19 +326,20 @@ def get_fields_by_document(document_id: int):
     if not conn:
         return []
     cursor = conn.cursor(dictionary=True)
-    cursor.execute(
-        """
-        SELECT group_name, field_key, field_value
-        FROM ddr_fields
-        WHERE document_id = %s
-        ORDER BY group_name, field_key
-    """,
-        (document_id,),
-    )
-    rows = cursor.fetchall()
-    cursor.close()
-    conn.close()
-    return rows
+    try:
+        cursor.execute(
+            """
+            SELECT group_name, field_key, field_value
+            FROM ddr_fields
+            WHERE document_id = %s
+            ORDER BY group_name, field_key
+            """,
+            (document_id,),
+        )
+        return cursor.fetchall()
+    finally:
+        cursor.close()
+        conn.close()
 
 
 def get_time_breakdown_by_document(document_id: int):
@@ -338,18 +347,19 @@ def get_time_breakdown_by_document(document_id: int):
     if not conn:
         return []
     cursor = conn.cursor(dictionary=True)
-    cursor.execute(
-        """
-        SELECT * FROM ddr_time_breakdown
-        WHERE document_id = %s
-        ORDER BY period_date, start_time
-    """,
-        (document_id,),
-    )
-    rows = cursor.fetchall()
-    cursor.close()
-    conn.close()
-    return rows
+    try:
+        cursor.execute(
+            """
+            SELECT * FROM ddr_time_breakdown
+            WHERE document_id = %s
+            ORDER BY period_date, start_time
+            """,
+            (document_id,),
+        )
+        return cursor.fetchall()
+    finally:
+        cursor.close()
+        conn.close()
 
 
 # ==========================================
